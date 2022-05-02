@@ -1,4 +1,5 @@
 #include "Ship.h"
+#include "Laser.h"
 
 const float SPEED = 0.3f;
 const int FIRE_DELAY = 200;
@@ -30,7 +31,8 @@ void Ship::update(sf::Time& elapse) {
 		float laserX = x + bounds.width;
 		float laserY = y + (bounds.height / 2.0f);
 
-		LaserPtr laser = std::make_shared<laser>(sf::Vector2f(laserX, laserY));
+		LaserPtr laser = std::make_shared<Laser>(sf::Vector2f(laserX, laserY));
+		GAME.getCurrentScene().addGameObject(laser);
 	}
 }
 Ship::Ship()

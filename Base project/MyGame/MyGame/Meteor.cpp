@@ -1,4 +1,5 @@
 #include "Meteor.h"
+#include "Explosion.h"
 
 const float SPEED = 0.25f;
 
@@ -13,12 +14,14 @@ void Meteor::handleCollision(GameObject& otherGameObject)
 	{
 		otherGameObject.makeDead();
 	}
-
+	ExplosionPtr explosion = std::make_shared<Explosion>(sprite_.getPosition());
+	GAME.getCurrentScene().addGameObject(explosion);
 	makeDead();
 }
 
 Meteor::Meteor(sf::Vector2f pos)
 {
+	setCollisionCheckEnabled(true);
 	sprite_.setTexture(GAME.getTexture("Resources/meteor.png"));
 	sprite_.setPosition(pos);
 	assignTag("meteor");

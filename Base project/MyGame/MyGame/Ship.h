@@ -7,6 +7,7 @@ class Ship : public GameObject
 public:
 	//Creats our chip
 	Ship();
+	sf::FloatRect getCollisionRect();
 
 	//Functions overridden from GameObject;
 	void draw();

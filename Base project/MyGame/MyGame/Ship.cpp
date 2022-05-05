@@ -35,6 +35,12 @@ void Ship::update(sf::Time& elapse) {
 		GAME.getCurrentScene().addGameObject(laser);
 	}
 }
+
+sf::FloatRect Ship::getCollisionRect()
+{
+	return sprite_.getGlobalBounds();
+}
+
 Ship::Ship()
 {
 	sprite_.setTexture(GAME.getTexture("Resources/ship.png"));

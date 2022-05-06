@@ -1,5 +1,6 @@
 #include "Meteor.h"
 #include "Explosion.h"
+#include "GameScene.h"
 
 const float SPEED = 0.25f;
 
@@ -10,6 +11,8 @@ sf::FloatRect Meteor::getCollisionRect()
 
 void Meteor::handleCollision(GameObject& otherGameObject)
 {
+	GameScene& scene = (GameScene&)GAME.getCurrentScene();
+	scene.increaseScore();
 	if (otherGameObject.hasTag("laser"))
 	{
 		otherGameObject.makeDead();
